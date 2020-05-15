@@ -1,0 +1,48 @@
+@extends('master')
+
+@section('content')
+<div class="inner-header">
+		<div class="container">
+			<div class="pull-left">
+				<h6 class="inner-title">Đăng nhập</h6>
+			</div>
+			<div class="pull-right">
+				<div class="beta-breadcrumb">
+					<a href="{{route('trangchu')}}">Home</a> / <span>Đăng nhập</span>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div id="content">
+		
+			<form action="{{route('login')}}" method="post" class="beta-form-checkout">
+				<input type="hidden" name="_token" value="{{csrf_token()}}"/>
+				<div class="row">
+					<div class="col-sm-3"></div>
+					@if(Session::has('flag'))
+						<div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}</div>
+					@endif
+					<div class="col-sm-6">
+						<h4>Đăng nhập</h4>
+						<div class="space20">&nbsp;</div>
+
+						
+						<fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Password" name="password" type="password">
+                                </div>
+                                <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
+                            </fieldset>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+			</form>
+		</div> <!-- #content -->
+	</div> <!-- .container -->
+@endsection
